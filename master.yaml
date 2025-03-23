@@ -8,6 +8,7 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
     filter: "香港|日本|美国|新加坡|台湾"
+    exclude-filter: "IPV6"
     proxy: 直连
   backup:
     url: ""
@@ -18,12 +19,13 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
     filter: "香港|日本|美国|新加坡|台湾"
+    exclude-filter: "IPV6"
     proxy: 直连
 
 proxies:
   - {name: 直连, type: direct, udp: true}
 
-pr: &pr {type: select, proxies: [ 主用自动, 备用自动, 主用香港, 备用香港, 主用台湾, 备用台湾, 主用美国, 备用美国, 主用日本, 备用日本, 主用土坡, 备用土坡, 直连, 手动切换]}
+pr: &pr {type: select, proxies: [ 主用自动, 备用自动, 主用香港, 备用香港, 主用台湾, 备用台湾, 主用美国, 备用美国, 主用日本, 备用日本, 主用土坡, 备用土坡, 全球直连, 手动切换]}
 proxy-groups:
   - {name: 手动切换, type: select, include-all: true, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Flight.png"}
   - {name: 节点选择, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Flight.png"}
@@ -36,9 +38,10 @@ proxy-groups:
   - {name: Microsoft, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Microsoft.png"}
   - {name: TikTok, type: select, proxies: [家宽节点], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/TikTok.png"}
   - {name: Telegram, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Telegram.png"}
-  - {name: NETFLIX, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Netflix.png"}
+  - {name: NETFLIX, type: select, proxies: [家宽节点], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Netflix.png"}
   - {name: Apple, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Apple.png"}
   - {name: 漏网之鱼, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Fish.png"}
+  - {name: 全球直连, type: select, proxies: [直连], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/DIRECT.png"}
   - {name: 家宽节点, type: select, include-all: true, filter: "(?!)家宽|原生", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Home.png"}
   - {name: 主用自动, type: url-test, use: ["primary"], tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Transfer.png"}
   - {name: 备用自动, type: url-test, use: ["backup"], tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Transfer.png"}
