@@ -1,0 +1,115 @@
+proxy-providers:
+  primary:
+    url: ""
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    filter: "香港|日本|美国|新加坡|台湾"
+    proxy: 直连
+  backup:
+    url: ""
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    filter: "香港|日本|美国|新加坡|台湾"
+    proxy: 直连
+
+proxies:
+  - {name: 直连, type: direct, udp: true}
+
+pr: &pr {type: select, proxies: [ 主用自动, 备用自动, 主用香港, 备用香港, 主用台湾, 备用台湾, 主用美国, 备用美国, 主用日本, 备用日本, 主用土坡, 备用土坡, 直连, 手动切换]}
+proxy-groups:
+  - {name: 手动切换, type: select, include-all: true, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Flight.png"}
+  - {name: 节点选择, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Flight.png"}
+  - {name: YouTube, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/YouTube.png"}
+  - {name: Google, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Google.png"}
+  - {name: ChatGPT, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/ChatGPT.png"}
+  - {name: GitHub, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/GitHub.png"}
+  - {name: 国外网盘, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Download.png"}
+  - {name: Kemono, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Calcifer.png"}
+  - {name: Microsoft, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Microsoft.png"}
+  - {name: TikTok, type: select, proxies: [家宽节点], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/TikTok.png"}
+  - {name: Telegram, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Telegram.png"}
+  - {name: NETFLIX, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Netflix.png"}
+  - {name: Apple, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Apple.png"}
+  - {name: 漏网之鱼, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Fish.png"}
+  - {name: 家宽节点, type: select, include-all: true, filter: "(?!)家宽|原生", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Home.png"}
+  - {name: 主用自动, type: url-test, use: ["primary"], tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Transfer.png"}
+  - {name: 备用自动, type: url-test, use: ["backup"], tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Transfer.png"}
+  - {name: 主用香港, type: url-test, use: ["primary"], tolerance: 20, interval: 300, filter: "港|hk|hongkong|hong kong", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Hong_Kong.png"}
+  - {name: 备用香港, type: url-test, use: ["backup"], tolerance: 20, interval: 300, filter: "港|hk|hongkong|hong kong", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Hong_Kong.png"}
+  - {name: 主用台湾, type: url-test, use: ["primary"], tolerance: 20, interval: 300, filter: "台|新北|彰化|TW|Taiwan", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Taiwan_Province.png"}
+  - {name: 备用台湾, type: url-test, use: ["backup"], tolerance: 20, interval: 300, filter: "台|新北|彰化|TW|Taiwan", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Taiwan_Province.png"}
+  - {name: 主用美国, type: url-test, use: ["primary"], tolerance: 20, interval: 300, filter: "美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/USA.png"}
+  - {name: 备用美国, type: url-test, use: ["backup"], tolerance: 20, interval: 300, filter: "美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/USA.png"}
+  - {name: 主用日本, type: url-test, use: ["primary"], tolerance: 20, interval: 300, filter: "日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Japan.png"}
+  - {name: 备用日本, type: url-test, use: ["backup"], tolerance: 20, interval: 300, filter: "日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Japan.png"}
+  - {name: 主用土坡, type: url-test, use: ["primary"], tolerance: 20, interval: 300, filter: "新加坡|坡|狮城|SG|Singapore", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Singapore.png"}
+  - {name: 备用土坡, type: url-test, use: ["backup"], tolerance: 20, interval: 300, filter: "新加坡|坡|狮城|SG|Singapore", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Singapore.png"}
+
+rules:
+  - RULE-SET,private_domain,直连
+  - RULE-SET,apple,Apple
+  - RULE-SET,ChatGPT,ChatGPT
+  - RULE-SET,github,GitHub
+  - RULE-SET,youtube,YouTube
+  - RULE-SET,google,Google
+  - RULE-SET,onedrive,国外网盘
+  - RULE-SET,mega,国外网盘
+  - RULE-SET,MediaFire,国外网盘
+  - RULE-SET,GoogleDrive,国外网盘
+  - RULE-SET,Dropbox,国外网盘
+  - RULE-SET,pikpak,国外网盘
+  - RULE-SET,kemono,Kemono
+  - RULE-SET,microsoft,Microsoft
+  - RULE-SET,tiktok,TikTok
+  - RULE-SET,telegram,Telegram
+  - RULE-SET,netflix,NETFLIX
+  - RULE-SET,gfw,节点选择
+  - RULE-SET,geolocation-!cn,节点选择
+  - RULE-SET,cn_domain,直连
+  - RULE-SET,google_ip,Google,no-resolve
+  - RULE-SET,netflix_ip,NETFLIX,no-resolve
+  - RULE-SET,telegram_ip,Telegram,no-resolve
+  - RULE-SET,cn_ip,直连,no-resolve
+  - RULE-SET,Direct,直连,no-resolve
+  - MATCH,漏网之鱼
+
+rule-anchor:
+  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
+  domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
+  class: &class {type: http, interval: 86400, behavior: classical, format: text}
+rule-providers: 
+  private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
+  ChatGPT: {  <<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-ai-chat-!cn.mrs"}
+  mega: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/mega.mrs"}
+  onedrive: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/onedrive.mrs"}
+  Dropbox: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/dropbox.mrs"}
+  pikpak: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/pikpak.mrs"}
+  kemono: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/kemono.mrs"}
+  youtube: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
+  google: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
+  github: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
+  telegram: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs"}
+  netflix: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
+  microsoft: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"}
+  apple: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-cn.mrs"}
+  tiktok: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs"}
+  gfw: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs"}
+  geolocation-!cn: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"}
+  cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
+
+  cn_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
+  google_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
+  telegram_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs"}
+  netflix_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"}
+
+  GoogleDrive: { <<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/GoogleDrive/GoogleDrive.list"}
+  MediaFire: { <<: *class, url: "https://raw.githubusercontent.com/Fake-IP/config/refs/heads/main/rule/MediaFire.list"}
+  Direct: { <<: *class, url: "https://raw.githubusercontent.com/Fake-IP/config/refs/heads/main/rule/Direct.list"}
