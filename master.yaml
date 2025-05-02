@@ -25,7 +25,7 @@ proxy-providers:
 proxies:
   - {name: 直连, type: direct, udp: true}
 
-pr: &pr {type: select, proxies: [ 主用自动, 备用自动, 主用香港, 备用香港, 主用台湾, 备用台湾, 主用美国, 备用美国, 主用日本, 备用日本, 主用土坡, 备用土坡, 全球直连, 手动切换]}
+pr: &pr {type: select, proxies: [ 主用自动, 备用自动, 主用香港, 备用香港, 主用台湾, 备用台湾, 主用美国, 备用美国, 主用日本, 备用日本, 主用土坡, 备用土坡, 全球直连, 手动切换, 负载轮询]}
 proxy-groups:
   - {name: 手动切换, type: select, include-all: true, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Flight.png"}
   - {name: 节点选择, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Flight.png"}
@@ -55,6 +55,7 @@ proxy-groups:
   - {name: 备用日本, type: url-test, use: ["backup"], tolerance: 20, interval: 300, filter: "日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Japan.png"}
   - {name: 主用土坡, type: url-test, use: ["primary"], tolerance: 20, interval: 300, filter: "新加坡|坡|狮城|SG|Singapore", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Singapore.png"}
   - {name: 备用土坡, type: url-test, use: ["backup"], tolerance: 20, interval: 300, filter: "新加坡|坡|狮城|SG|Singapore", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Singapore.png"}
+  - {name: 负载轮询, type: load-balance, strategy: round-robin,include-all: true,filter: "^((?!(直连)).)*$",icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Load_balancing.png"}
 
 rules:
   - RULE-SET,private_domain,直连
