@@ -9,7 +9,7 @@ proxy-providers:
       interval: 300
     filter: "香港|日本|美国|新加坡|台湾"
     exclude-filter: "IPV6"
-    proxy: 直连
+    proxy: 直接连接
   backup:
     url: ""
     type: http
@@ -20,12 +20,12 @@ proxy-providers:
       interval: 300
     filter: "香港|日本|美国|新加坡|台湾"
     exclude-filter: "IPV6"
-    proxy: 直连
+    proxy: 直接连接
 
 proxies:
-  - {name: 直连, type: direct, udp: true}
+  - {name: 直接连接, type: direct, udp: true}
 
-pr: &pr {type: select, proxies: [ 主用自动, 备用自动, 主用香港, 备用香港, 主用台湾, 备用台湾, 主用美国, 备用美国, 主用日本, 备用日本, 主用土坡, 备用土坡, 全球直连, 手动切换, 负载轮询]}
+pr: &pr {type: select, proxies: [ 主用自动, 备用自动, 主用香港, 备用香港, 主用台湾, 备用台湾, 主用美国, 备用美国, 主用日本, 备用日本, 主用土坡, 备用土坡, 负载轮询, 直连节点, 全球直连, 手动切换]}
 proxy-groups:
   - {name: 手动切换, type: select, include-all: true, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Flight.png"}
   - {name: 节点选择, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Flight.png"}
@@ -41,10 +41,11 @@ proxy-groups:
   - {name: NETFLIX, type: select, proxies: [家宽节点,手动切换], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Netflix.png"}
   - {name: Apple, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Apple.png"}
   - {name: 漏网之鱼, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Fish.png"}
-  - {name: 全球直连, type: select, proxies: [直连], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/DIRECT.png"}
+  - {name: 全球直连, type: select, proxies: [直接连接], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/DIRECT.png"}
   - {name: 家宽节点, type: select, include-all: true, filter: "家宽|原生", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Home.png"}
-  - {name: 主用自动, type: url-test, use: ["primary"], tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Transfer.png"}
-  - {name: 备用自动, type: url-test, use: ["backup"], tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Transfer.png"}
+  - {name: 直连节点, type: url-test, include-all: true, filter: "直连", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/DIRECT.png"}
+  - {name: 主用自动, type: url-test, use: ["primary"], tolerance: 20, interval: 300, filter: "^((?!(直接连接)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Transfer.png"}
+  - {name: 备用自动, type: url-test, use: ["backup"], tolerance: 20, interval: 300, filter: "^((?!(直接连接)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Transfer.png"}
   - {name: 主用香港, type: url-test, use: ["primary"], tolerance: 20, interval: 300, filter: "港|hk|hongkong|hong kong", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Hong_Kong.png"}
   - {name: 备用香港, type: url-test, use: ["backup"], tolerance: 20, interval: 300, filter: "港|hk|hongkong|hong kong", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Hong_Kong.png"}
   - {name: 主用台湾, type: url-test, use: ["primary"], tolerance: 20, interval: 300, filter: "台|新北|彰化|TW|Taiwan", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Taiwan_Province.png"}
@@ -55,10 +56,11 @@ proxy-groups:
   - {name: 备用日本, type: url-test, use: ["backup"], tolerance: 20, interval: 300, filter: "日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Japan.png"}
   - {name: 主用土坡, type: url-test, use: ["primary"], tolerance: 20, interval: 300, filter: "新加坡|坡|狮城|SG|Singapore", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Singapore.png"}
   - {name: 备用土坡, type: url-test, use: ["backup"], tolerance: 20, interval: 300, filter: "新加坡|坡|狮城|SG|Singapore", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Singapore.png"}
-  - {name: 负载轮询, type: load-balance, strategy: round-robin,include-all: true,filter: "^((?!(直连)).)*$",icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Load_balancing.png"}
+  - {name: 负载轮询, type: load-balance, strategy: round-robin,include-all: true,filter: "^((?!(直接连接)).)*$",icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Load_balancing.png"}
 
 rules:
-  - RULE-SET,private_domain,直连
+  - DOMAIN-SUFFIX,hongxingyunmovie.vip,直连节点
+  - RULE-SET,private_domain,直接连接
   - RULE-SET,apple,Apple
   - RULE-SET,ChatGPT,ChatGPT
   - RULE-SET,github,GitHub
@@ -77,12 +79,12 @@ rules:
   - RULE-SET,netflix,NETFLIX
   - RULE-SET,gfw,节点选择
   - RULE-SET,geolocation-!cn,节点选择
-  - RULE-SET,cn_domain,直连
+  - RULE-SET,cn_domain,直接连接
   - RULE-SET,google_ip,Google,no-resolve
   - RULE-SET,netflix_ip,NETFLIX,no-resolve
   - RULE-SET,telegram_ip,Telegram,no-resolve
-  - RULE-SET,cn_ip,直连,no-resolve
-  - RULE-SET,Direct,直连,no-resolve
+  - RULE-SET,cn_ip,直接连接,no-resolve
+  - RULE-SET,Direct,直接连接,no-resolve
   - MATCH,漏网之鱼
 
 rule-anchor:
