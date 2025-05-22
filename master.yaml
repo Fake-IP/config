@@ -60,6 +60,10 @@ proxy-groups:
 
 rules:
   - DOMAIN-SUFFIX,hongxingyunmovie.vip,直连节点
+  - SRC-IP-CIDR,192.168.2.100/25,直接连接
+  - SRC-IP-CIDR,192.168.2.128/26,直接连接
+  - SRC-IP-CIDR,192.168.2.160/27,直接连接
+  - SRC-IP-CIDR,192.168.2.192/29,直接连接
   - RULE-SET,private_domain,直接连接
   - RULE-SET,apple,Apple
   - RULE-SET,ChatGPT,ChatGPT
@@ -84,7 +88,6 @@ rules:
   - RULE-SET,netflix_ip,NETFLIX,no-resolve
   - RULE-SET,telegram_ip,Telegram,no-resolve
   - RULE-SET,cn_ip,直接连接,no-resolve
-  - RULE-SET,Direct,直接连接,no-resolve
   - MATCH,漏网之鱼
 
 rule-anchor:
@@ -118,4 +121,3 @@ rule-providers:
 
   GoogleDrive: { <<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/GoogleDrive/GoogleDrive.list"}
   MediaFire: { <<: *class, url: "https://raw.githubusercontent.com/Fake-IP/config/refs/heads/main/rule/MediaFire.list"}
-  Direct: { <<: *class, url: "https://raw.githubusercontent.com/Fake-IP/config/refs/heads/main/rule/Direct.list"}
