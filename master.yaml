@@ -37,6 +37,7 @@ proxy-groups:
   - {name: TikTok, type: select, proxies: [家宽节点,手动切换], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/TikTok.png"}
   - {name: Telegram, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Telegram.png"}
   - {name: Emby, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Emby.png"}
+  - {name: Civitai, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Other.png"}
   - {name: NETFLIX, type: select, proxies: [家宽节点,手动切换], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Netflix.png"}
   - {name: Apple, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Apple.png"}
   - {name: 漏网之鱼, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Fish.png"}
@@ -73,6 +74,7 @@ rules:
   - RULE-SET,mega,国外网盘
   - RULE-SET,MediaFire,国外网盘
   - RULE-SET,Emby,Emby
+  - RULE-SET,Civitai,Civitai
   - RULE-SET,GoogleDrive,国外网盘
   - RULE-SET,Dropbox,国外网盘
   - RULE-SET,pikpak,国外网盘
@@ -122,3 +124,5 @@ rule-providers:
   GoogleDrive: { <<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/GoogleDrive/GoogleDrive.list"}
   MediaFire: { <<: *class, url: "https://raw.githubusercontent.com/Fake-IP/config/refs/heads/main/rule/MediaFire.list"}
   Emby: { <<: *class, url: "https://raw.githubusercontent.com/Fake-IP/config/refs/heads/main/rule/Emby.list"}
+  Civitai: { <<: *class, url: "https://raw.githubusercontent.com/Fake-IP/config/refs/heads/main/rule/civitai.list"}
+ 
