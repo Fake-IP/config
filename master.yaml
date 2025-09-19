@@ -38,7 +38,6 @@ proxy-groups:
   - {name: Telegram, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Telegram.png"}
   - {name: Emby, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Emby.png"}
   - {name: Civitai, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Other.png"}
-  - {name: NETFLIX, type: select, proxies: [家宽节点,手动切换], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Netflix.png"}
   - {name: Apple, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Apple.png"}
   - {name: 漏网之鱼, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Fish.png"}
   - {name: 全球直连, type: select, proxies: [直接连接], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/DIRECT.png"}
@@ -82,12 +81,10 @@ rules:
   - RULE-SET,microsoft,Microsoft
   - RULE-SET,tiktok,TikTok
   - RULE-SET,telegram,Telegram
-  - RULE-SET,netflix,NETFLIX
   - RULE-SET,gfw,节点选择
   - RULE-SET,geolocation-!cn,节点选择
   - RULE-SET,cn_domain,直接连接
   - RULE-SET,google_ip,Google,no-resolve
-  - RULE-SET,netflix_ip,NETFLIX,no-resolve
   - RULE-SET,telegram_ip,Telegram,no-resolve
   - RULE-SET,cn_ip,直接连接,no-resolve
   - MATCH,漏网之鱼,no-resolve
@@ -108,7 +105,6 @@ rule-providers:
   google: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
   github: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
   telegram: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs"}
-  netflix: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
   microsoft: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"}
   apple: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-cn.mrs"}
   tiktok: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs"}
@@ -119,7 +115,6 @@ rule-providers:
   cn_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
   google_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
   telegram_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs"}
-  netflix_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"}
 
   GoogleDrive: { <<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/GoogleDrive/GoogleDrive.list"}
   MediaFire: { <<: *class, url: "https://raw.githubusercontent.com/Fake-IP/config/refs/heads/main/rule/MediaFire.list"}
