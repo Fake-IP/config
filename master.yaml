@@ -34,14 +34,14 @@ proxy-groups:
   - {name: 国外网盘, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Download.png"}
   - {name: Kemono, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Calcifer.png"}
   - {name: Microsoft, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Microsoft.png"}
-  - {name: TikTok, type: select, proxies: [家宽节点,手动切换], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/TikTok.png"}
+  - {name: TikTok, type: select, proxies: [原生家宽,手动切换], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/TikTok.png"}
   - {name: Telegram, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Telegram.png"}
   - {name: Emby, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Emby.png"}
   - {name: Civitai, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Other.png"}
   - {name: Apple, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Apple.png"}
   - {name: 漏网之鱼, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Fish.png"}
   - {name: 全球直连, type: select, proxies: [直接连接], icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/DIRECT.png"}
-  - {name: 家宽节点, type: select, include-all: true, filter: "家宽|原生", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Home.png"}
+  - {name: 原生家宽, type: select, include-all: true, filter: "家宽|原生|Home|home", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Home.png"}
   - {name: 直连节点, type: url-test, include-all: true, filter: "直连", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/DIRECT.png"}
   - {name: 主用自动, type: url-test, use: ["primary"], tolerance: 20, interval: 300, filter: "^((?!(直接连接|直连|KP)).)*$", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Transfer.png"}
   - {name: 备用自动, type: url-test, use: ["backup"], tolerance: 20, interval: 300, filter: "^(?!.*(直连|直接连接)).*(香港|HK|hongkong|Hong Kong|台|台湾|TW|Taiwan|新加坡|SG|Singapore|日本|JP|Japan|美|US|United States)", icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Transfer.png"}
