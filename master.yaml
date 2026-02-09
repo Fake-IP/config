@@ -7,7 +7,7 @@ proxy-providers:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300
-    exclude-filter: "IPV6|官网|到期|刷新|重置|流量"
+    exclude-filter: "IPV6|官网|到期|刷新|重置|流量|邮箱|更新"
     proxy: 直接连接
   backup:
     url: ""
@@ -17,7 +17,7 @@ proxy-providers:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300
-    exclude-filter: "IPV6|官网|到期|刷新|重置|流量"
+    exclude-filter: "IPV6|官网|到期|刷新|重置|流量|邮箱|更新"
     proxy: 直接连接
 
 proxies:
