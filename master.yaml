@@ -7,7 +7,7 @@ proxy-providers:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300
-    exclude-filter: "IPV6|官网|到期|刷新|重置|流量|邮箱|更新"
+    exclude-filter: "IPV6|官网|到期|刷新|重置|邮箱|更新"
     proxy: 直接连接
   backup:
     url: ""
@@ -23,9 +23,10 @@ proxy-providers:
 proxies:
   - {name: 直接连接, type: direct, udp: true}
 
-pr: &pr {type: select, proxies: [ 主用自动, 备用自动, 主用香港, 备用香港, 主用台湾, 备用台湾, 主用美国, 备用美国, 主用日本, 备用日本, 主用土坡, 备用土坡, 负载轮询, 冷门节点, 直连节点, 全球直连, 手动切换]}
+pr: &pr {type: select, proxies: [ 主用自动, 备用自动, 主用香港, 备用香港, 主用台湾, 备用台湾, 主用美国, 备用美国, 主用日本, 备用日本, 主用土坡, 备用土坡, 负载轮询, 冷门节点, 直连节点, 全球直连, 手动切换, 全局自动]}
 proxy-groups:
   - {name: 手动切换, type: select, include-all: true, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Flight.png"}
+  - {name: 全局自动, type: url-test, include-all: true, filter: "^((?!(直接连接|直连)).)*$",icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Flight.png"}
   - {name: 节点选择, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Flight.png"}
   - {name: YouTube, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/YouTube.png"}
   - {name: Google, <<: *pr, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Google.png"}
